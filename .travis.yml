@@ -9,6 +9,8 @@ before_script:
     - cp config/database.test.yml config/database.yml
     - sed -i -e "s/lodge_test/${DB_NAME}/" config/database.yml
     - cp .env.example .env
+    - cat config/database.yml
+    - cat config/.env
     - bundle install
 script:
     - RAILS_ENV=test bin/rake db:migrate --trace
