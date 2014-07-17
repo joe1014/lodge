@@ -4,8 +4,10 @@ rvm:
     - 2.0.0
     - 2.1.2
 before_script:
-    - mysql -e 'create database lodge_test'
+    - export DB_NAME="lodge_test"`data +%s`
+    - mysql -e "create database ${DB_NAME}"
     - cp config/database.test.yml config/database.yml
+    - sed -i -e "s/lodge_test/${DB_NAME}/" config/database.yml
     - cp .env.example .env
     - bundle install
 script:
